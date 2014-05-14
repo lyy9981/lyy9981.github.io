@@ -1,4 +1,4 @@
-var stage, choiceType, displayObjects = [], selectedDisplayObject, originalScale = 0;
+var stage, choiceType, displayObjects = [], selectedDisplayObject, output;
 
 function init() {
 	stage = new createjs.Stage("mainCanvas");
@@ -9,6 +9,13 @@ function init() {
 	createjs.Ticker.on("tick", tick);
 	createjs.Ticker.setFPS(10);
 	
+	// UI code. Display selection result
+	output = stage.addChild(new createjs.Text("", "14px monospace", "#000"));
+	output.lineHeight = 15;
+	output.textBaseline = "top";
+	output.x = 10;
+	output.y = stage.canvas.height-output.lineHeight*3-10;
+				
 	stage.update();
 }
 
@@ -165,7 +172,7 @@ function handleClickEvent(evt) {
 	var choiceValue = evt.target.name;
 	
 	createCookie(choiceType, choiceValue, 365);
-	console.log(readCookie(choiceType) + " is selected");
+	output.text = ("Wah ha ha ha ! Tu as choisi " + readCookie(choiceType) + ".");
 	
 	for (var i in displayObjects) { 
 		var displayObject = displayObjects[i];
