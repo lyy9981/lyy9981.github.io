@@ -177,16 +177,15 @@ function handleClickEvent(evt) {
 	for (var i in displayObjects) { 
 		var displayObject = displayObjects[i];
 		var tweenMoveOut;
-		var yDestination = stage.canvas.height + 200; // 200 is the height of object
 		
 		// Animate objects off stage and call handleComplete.
 		if(i==0) {
 			// We onlly want to call handleComplete once
 			tweenMoveOut = createjs.Tween.get(displayObject, {loop:false})
-			                         .to({y:yDestination}, 1000, createjs.Ease.quartOut).wait(10).call(handleComplete);
+			                         .to({scaleX:5.0, scaleY:5.0, alpha:0}, 1500, createjs.Ease.elasticIn).wait(10).call(handleComplete);
 		} else {
 			tweenMoveOut = createjs.Tween.get(displayObject, {loop:false})
-			                         .to({y:yDestination}, 1000, createjs.Ease.quartOut);
+			                         .to({scaleX:5.0, scaleY:5.0, alpha:0}, 1500, createjs.Ease.elasticIn);
 		}
 
 	}
