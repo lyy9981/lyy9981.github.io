@@ -177,14 +177,17 @@ function handleClickEvent(evt) {
 	for (var i in displayObjects) { 
 		var displayObject = displayObjects[i];
 		var tweenMoveOut;
+		var random = Math.floor((Math.random() * 10) + 2); // a random number between 2 and 10:
+		var yDestination = stage.canvas.height * random;
 		
+		// Animate objects off stage and call handleComplete.
 		if(i==0) {
 			// We onlly want to call handleComplete once
 			tweenMoveOut = createjs.Tween.get(displayObject, {loop:false})
-			                         .to({scaleX:5.0, scaleY:5.0, alpha:0}, 1500, createjs.Ease.elasticIn).wait(10).call(handleComplete);
+			                         .to({y:yDestination}, 1500, createjs.Ease.elasticIn).wait(10).call(handleComplete);
 		} else {
 			tweenMoveOut = createjs.Tween.get(displayObject, {loop:false})
-			                         .to({scaleX:5.0, scaleY:5.0, alpha:0}, 1500, createjs.Ease.elasticIn);
+			                         .to({y:yDestination}, 1500, createjs.Ease.elasticIn);
 		}
 
 	}
