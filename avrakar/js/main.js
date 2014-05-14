@@ -177,7 +177,7 @@ function handleClickEvent(evt) {
 	for (var i in displayObjects) { 
 		var displayObject = displayObjects[i];
 		var tweenMoveOut;
-		var yDestination = stage.canvas.height * 1.5;
+		var yDestination = stage.canvas.height + displayObject.regY * 2; // regY = width/2
 		
 		// Animate objects off stage and call handleComplete.
 		if(i==0) {
